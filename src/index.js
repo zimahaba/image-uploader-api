@@ -15,8 +15,10 @@ const upload = multer({dest: os.tmpdir()})
 const imageRepo = new ImageRepo();
 
 app.post('/images', upload.single('file'), (req, res) => {
-  imageRepo.add(req.file.path);
-  res.download(req.file.path);
+  setTimeout(() => {
+    const id = imageRepo.add(req.file.path);
+    res.send(id);
+  }, 2000);
 });
 
 app.get('/images/:id', (req, res) => {

@@ -8,7 +8,8 @@ class ImageRepo {
 
   add(filePath) {
     const id = crypto.randomBytes(4).toString('hex');
-    this.repo.push({id: id.toString(), path: filePath})
+    this.repo.push({id: id.toString(), path: filePath});
+    return id;
   }
 
   get(id) {
